@@ -116,7 +116,7 @@ export class FirstAidChatbot {
         context: ConversationContext
     ): Promise<string> {
         try {
-            const model = this.genAI.getGenerativeModel({ model: 'gemini-pro' });
+            const model = this.genAI.getGenerativeModel({ model: 'gemini-2.0-flash' });
 
             // Build conversation history
             const conversationHistory = context.messages.slice(-6); // Last  6 messages for context
@@ -133,6 +133,8 @@ export class FirstAidChatbot {
             return response.text();
         } catch (error) {
             console.error('Error generating AI response:', error);
+            console.error('Error details:', error instanceof Error ? error.message : String(error));
+            console.error('Full error object:', JSON.stringify(error, null, 2));
             return `I apologize, but I'm having trouble generating a response right now. 
 
 If this is an emergency, please call emergency services immediately (121 or 767).

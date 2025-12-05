@@ -9,7 +9,7 @@ export default function EmergencyAlert() {
                 <span className={styles.icon}>🚨</span>
                 <div className={styles.text}>
                     <strong>Life-Threatening Emergency?</strong>
-                    <span> Call Emergency Services: 911 (US) | 999 (UK) | 112 (EU)</span>
+                    <span> Call Emergency Services: 767 or 112</span>
                 </div>
             </div>
         </div>
