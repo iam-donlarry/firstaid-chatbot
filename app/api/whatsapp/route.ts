@@ -22,6 +22,13 @@ export async function POST(request: NextRequest) {
         const from = formData.get('From')?.toString() || '';
         const numMedia = parseInt(formData.get('NumMedia')?.toString() || '0');
 
+        console.log('--- WhatsApp Webhook Debug ---');
+        console.log('From:', from);
+        console.log('Message Body:', message);
+        console.log('NumMedia:', numMedia);
+        console.log('MediaUrl0:', formData.get('MediaUrl0'));
+        console.log('------------------------------');
+
         // Use phone number as session ID
         const sessionId = from.replace('whatsapp:', '');
 
@@ -59,15 +66,35 @@ export async function POST(request: NextRequest) {
                     );
                 } catch (imageError) {
                     console.error('Error downloading/processing image:', imageError);
-                    // Fallback to text-only response
-                    response = await bot.chat(
-                        'I received an image but had trouble processing it. ' + message,
-                        sessionId
-                    );
+
+                    // Fallback logic:
+                    if (message) {
+                        // If there is text, process the text
+                        response = await bot.chat(
+                            'I received an image but had trouble processing it. ' + message,
+                            sessionId
+                        );
+                    } else {
+                        // If no text, send specific error instead of empty chat which triggers greeting
+                        response = {
+                            message: "I received your image but couldn't process it. Please try sending it again, or describe the injury in text.",
+                            isEmergency: false,
+                            sessionId: sessionId
+                        };
+                    }
                 }
             } else {
-                // No media URL, process as text
-                response = await bot.chat(message, sessionId);
+                // NumMedia > 0 but no MediaUrl found
+                console.warn('NumMedia is > 0 but MediaUrl0 is missing');
+                if (message) {
+                    response = await bot.chat(message, sessionId);
+                } else {
+                    response = {
+                        message: "I see you sent an attachment, but I couldn't access it. Please try sending it again.",
+                        isEmergency: false,
+                        sessionId: sessionId
+                    };
+                }
             }
         } else {
             // No media, process as text
