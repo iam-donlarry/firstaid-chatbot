@@ -107,6 +107,72 @@ export class FirstAidChatbot {
     }
 
     /**
+     * Process a user message with an image and generate a response
+     */
+    async chatWithImage(
+        userMessage: string,
+        imageData: Buffer,
+        mimeType: string,
+        sessionId?: string
+    ): Promise<ChatResponse> {
+        // Create or retrieve session
+        const sid = sessionId || uuidv4();
+        let context = this.conversations.get(sid);
+
+        if (!context) {
+            context = {
+                sessionId: sid,
+                messages: [],
+                emergencyDetected: false
+            };
+            this.conversations.set(sid, context);
+        }
+
+        try {
+            // Convert image to base64
+            const base64Image = imageData.toString('base64');
+
+            // Generate AI response with image
+            const aiResponse = await this.generateAIResponseWithImage(
+                userMessage,
+                base64Image,
+                mimeType,
+                context
+            );
+
+            // Store messages in context
+            const userMsg: Message = {
+                id: uuidv4(),
+                role: 'user',
+                content: userMessage + ' [Image attached]',
+                timestamp: new Date()
+            };
+
+            const assistantMsg: Message = {
+                id: uuidv4(),
+                role: 'assistant',
+                content: aiResponse,
+                timestamp: new Date()
+            };
+
+            context.messages.push(userMsg, assistantMsg);
+
+            return {
+                message: aiResponse,
+                isEmergency: false,
+                sessionId: sid
+            };
+        } catch (error) {
+            console.error('Error processing image chat:', error);
+            return {
+                message: 'I apologize, but I had trouble analyzing the image. Please try again or describe the situation in text. If this is an emergency, please call emergency services immediately.',
+                isEmergency: false,
+                sessionId: sid
+            };
+        }
+    }
+
+    /**
      * Generate AI response using Gemini
      */
     private async generateAIResponse(
@@ -140,6 +206,54 @@ export class FirstAidChatbot {
 If this is an emergency, please call emergency services immediately (121 or 767).
 
 For non-emergency first-aid guidance, please try rephrasing your question.`;
+        }
+    }
+
+    /**
+     * Generate AI response using Gemini with image input
+     */
+    private async generateAIResponseWithImage(
+        userMessage: string,
+        base64Image: string,
+        mimeType: string,
+        context: ConversationContext
+    ): Promise<string> {
+        try {
+            const model = this.genAI.getGenerativeModel({ model: 'gemini-2.0-flash' });
+
+            // Medical image analysis prompt
+            const imagePrompt = `You are a first-aid assistant analyzing an image. 
+
+CRITICAL DISCLAIMERS:
+- This is NOT a medical diagnosis
+- If this appears to be a serious injury, the user should seek immediate professional medical help
+- Emergency services should be called for: severe bleeding, burns covering large areas, deep wounds, signs of shock, difficulty breathing, or suspected fractures
+
+Based on the image provided, please:
+1. Describe what you observe
+2. Assess the severity (minor, moderate, or potentially serious)
+3. Provide appropriate first-aid steps if it's minor
+4. STRONGLY recommend professional medical care if it appears moderate to serious
+
+User's message: ${userMessage || 'Please analyze this image'}
+
+Remember: Be helpful but cautious. Better to over-recommend professional care than under-recommend it.`;
+
+            const result = await model.generateContent([
+                imagePrompt,
+                {
+                    inlineData: {
+                        data: base64Image,
+                        mimeType: mimeType
+                    }
+                }
+            ]);
+
+            const response = await result.response;
+            return response.text();
+        } catch (error) {
+            console.error('Error generating AI response with image:', error);
+            return `I apologize, but I couldn't analyze the image. Please try describing the injury in text, or seek professional medical help if needed.`;
         }
     }
 
