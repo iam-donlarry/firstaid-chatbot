@@ -135,7 +135,7 @@ export class FirstAidChatbot {
             console.error('Error generating AI response:', error);
             return `I apologize, but I'm having trouble generating a response right now. 
 
-If this is an emergency, please call emergency services immediately (911 in US, 999 in UK, 112 in EU).
+If this is an emergency, please call emergency services immediately (121 or 767).
 
 For non-emergency first-aid guidance, please try rephrasing your question.`;
         }

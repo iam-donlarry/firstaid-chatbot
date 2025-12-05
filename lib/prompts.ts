@@ -58,7 +58,7 @@ export function generateContextPrompt(
  * Response templates for common scenarios
  */
 export const RESPONSE_TEMPLATES = {
-    greeting: `Hello! I'm your First Aid Assistant. I'm here to help you with guidance for common domestic accidents and injuries.
+    greeting: `Hello! I'm SafetyBuddy your First Aid Assistant. I'm here to help you with guidance for common domestic accidents and injuries.
 
 **I can help with:**
 - Cuts and scrapes
