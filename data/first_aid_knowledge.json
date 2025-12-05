@@ -1,0 +1,541 @@
+{
+  "injuries": [
+    {
+      "id": "cuts_minor",
+      "name": "Minor Cuts and Scrapes",
+      "keywords": ["cut", "scrape", "scratch", "bleeding", "wound", "minor injury"],
+      "severity": "minor",
+      "symptoms": [
+        "Small cut or scrape on skin",
+        "Light bleeding",
+        "Minor pain or stinging"
+      ],
+      "first_aid_steps": [
+        {
+          "step": 1,
+          "instruction": "Wash your hands thoroughly with soap and water before treating the wound"
+        },
+        {
+          "step": 2,
+          "instruction": "Clean the cut gently with clean water to remove dirt and debris"
+        },
+        {
+          "step": 3,
+          "instruction": "Apply gentle pressure with a clean cloth or bandage to stop bleeding"
+        },
+        {
+          "step": 4,
+          "instruction": "Apply an antibiotic ointment if available to prevent infection"
+        },
+        {
+          "step": 5,
+          "instruction": "Cover with a sterile bandage or adhesive strip"
+        },
+        {
+          "step": 6,
+          "instruction": "Change the bandage daily and monitor for signs of infection"
+        }
+      ],
+      "emergency_triggers": [
+        "Deep cut that won't stop bleeding after 10 minutes of pressure",
+        "Cut caused by a dirty or rusty object",
+        "Signs of infection (increased pain, redness, swelling, pus)",
+        "Cut on face, joint, or hand that may need stitches"
+      ],
+      "prevention_tips": [
+        "Keep sharp objects stored safely",
+        "Use cutting tools carefully and away from your body",
+        "Keep work areas clean and well-lit"
+      ]
+    },
+    {
+      "id": "burns_minor",
+      "name": "Minor Burns (First-Degree)",
+      "keywords": ["burn", "scald", "hot water", "fire", "heat", "burned skin"],
+      "severity": "minor",
+      "symptoms": [
+        "Redness of skin",
+        "Minor swelling",
+        "Pain at burn site",
+        "Skin feels warm to touch"
+      ],
+      "first_aid_steps": [
+        {
+          "step": 1,
+          "instruction": "Remove the person from the heat source immediately"
+        },
+        {
+          "step": 2,
+          "instruction": "Cool the burn under cool (not cold) running water for 10-20 minutes"
+        },
+        {
+          "step": 3,
+          "instruction": "Remove any jewelry or tight clothing near the burn before swelling occurs"
+        },
+        {
+          "step": 4,
+          "instruction": "Cover the burn with a sterile, non-stick bandage or clean cloth"
+        },
+        {
+          "step": 5,
+          "instruction": "Take over-the-counter pain medication if needed (ibuprofen or acetaminophen)"
+        },
+        {
+          "step": 6,
+          "instruction": "Do NOT apply ice, butter, or ointments to the burn"
+        }
+      ],
+      "emergency_triggers": [
+        "Burn is larger than 3 inches in diameter",
+        "Burn affects face, hands, feet, joints, or genitals",
+        "Skin appears charred, white, or leathery (third-degree burn)",
+        "Burn is caused by chemicals or electricity",
+        "Victim is a child or elderly person",
+        "Blisters are large or numerous"
+      ],
+      "prevention_tips": [
+        "Keep hot liquids and foods away from table edges",
+        "Use back burners when cooking",
+        "Test bath water temperature before bathing children",
+        "Keep matches and lighters out of children's reach"
+      ]
+    },
+    {
+      "id": "sprains_strains",
+      "name": "Sprains and Strains",
+      "keywords": ["sprain", "strain", "twisted ankle", "pulled muscle", "ligament", "ankle", "wrist"],
+      "severity": "moderate",
+      "symptoms": [
+        "Pain and tenderness",
+        "Swelling",
+        "Bruising",
+        "Limited ability to move the affected joint",
+        "Popping or tearing sensation at time of injury"
+      ],
+      "first_aid_steps": [
+        {
+          "step": 1,
+          "instruction": "Follow the R.I.C.E. method: Rest, Ice, Compression, Elevation"
+        },
+        {
+          "step": 2,
+          "instruction": "REST: Stop activity and rest the injured area"
+        },
+        {
+          "step": 3,
+          "instruction": "ICE: Apply ice pack for 15-20 minutes every 2-3 hours for the first 48 hours"
+        },
+        {
+          "step": 4,
+          "instruction": "COMPRESSION: Wrap with elastic bandage (not too tight)"
+        },
+        {
+          "step": 5,
+          "instruction": "ELEVATION: Keep the injured area elevated above heart level"
+        },
+        {
+          "step": 6,
+          "instruction": "Take over-the-counter pain medication if needed"
+        }
+      ],
+      "emergency_triggers": [
+        "Severe pain and inability to move the joint",
+        "Numbness or tingling in the affected area",
+        "Visible deformity or bone protruding",
+        "Inability to bear weight on the injured limb",
+        "No improvement after 48 hours of home treatment"
+      ],
+      "prevention_tips": [
+        "Warm up before exercise",
+        "Wear proper footwear",
+        "Maintain good muscle strength and flexibility",
+        "Avoid exercising when tired"
+      ]
+    },
+    {
+      "id": "nosebleed",
+      "name": "Nosebleed",
+      "keywords": ["nosebleed", "nose bleeding", "bloody nose", "nasal bleeding"],
+      "severity": "minor",
+      "symptoms": [
+        "Blood flowing from one or both nostrils",
+        "Blood dripping down back of throat",
+        "Sensation of liquid in nasal passage"
+      ],
+      "first_aid_steps": [
+        {
+          "step": 1,
+          "instruction": "Sit upright and lean slightly forward (not backward)"
+        },
+        {
+          "step": 2,
+          "instruction": "Pinch the soft part of the nose firmly for 10 minutes"
+        },
+        {
+          "step": 3,
+          "instruction": "Breathe through your mouth while pinching"
+        },
+        {
+          "step": 4,
+          "instruction": "Apply a cold compress to the bridge of the nose"
+        },
+        {
+          "step": 5,
+          "instruction": "After 10 minutes, release pressure and check if bleeding has stopped"
+        },
+        {
+          "step": 6,
+          "instruction": "If still bleeding, repeat pinching for another 10 minutes"
+        }
+      ],
+      "emergency_triggers": [
+        "Bleeding continues for more than 20 minutes",
+        "Nosebleed after head injury",
+        "Difficulty breathing",
+        "Large amount of blood loss",
+        "Frequent nosebleeds",
+        "Blood thinning medication being used"
+      ],
+      "prevention_tips": [
+        "Keep home air humidified",
+        "Avoid picking your nose",
+        "Trim fingernails short",
+        "Use saline nasal spray to keep nasal passages  moist"
+      ]
+    },
+    {
+      "id": "choking",
+      "name": "Choking",
+      "keywords": ["choking", "can't breathe", "food stuck", "airway blocked", "heimlich"],
+      "severity": "emergency",
+      "symptoms": [
+        "Inability to talk or cry",
+        "Difficulty breathing or noisy breathing",
+        "Inability to cough effectively",
+        "Skin turning blue",
+        "Clutching at throat"
+      ],
+      "first_aid_steps": [
+        {
+          "step": 1,
+          "instruction": "If person can cough, encourage them to keep coughing"
+        },
+        {
+          "step": 2,
+          "instruction": "If cannot cough/speak: Stand behind the person"
+        },
+        {
+          "step": 3,
+          "instruction": "Make a fist with one hand, place it above their navel"
+        },
+        {
+          "step": 4,
+          "instruction": "Grasp your fist with the other hand"
+        },
+        {
+          "step": 5,
+          "instruction": "Give quick, upward abdominal thrusts (Heimlich maneuver)"
+        },
+        {
+          "step": 6,
+          "instruction": "Repeat until object is dislodged or person becomes unconscious"
+        },
+        {
+          "step": 7,
+          "instruction": "If person becomes unconscious, call emergency services immediately and start CPR"
+        }
+      ],
+      "emergency_triggers": [
+        "THIS IS AN EMERGENCY - CALL EMERGENCY SERVICES IMMEDIATELY",
+        "Person cannot breathe, talk, or cough",
+        "Person is turning blue",
+        "Person becomes unconscious"
+      ],
+      "prevention_tips": [
+        "Cut food into small pieces",
+        "Chew food slowly and thoroughly",
+        "Avoid talking or laughing while chewing",
+        "Supervise young children during meals",
+        "Keep small objects away from young children"
+      ]
+    },
+    {
+      "id": "fracture_suspected",
+      "name": "Suspected Bone Fracture",
+      "keywords": ["fracture", "broken bone", "break", "bone", "crack", "deformed limb"],
+      "severity": "serious",
+      "symptoms": [
+        "Severe pain",
+        "Swelling and bruising",
+        "Deformity or abnormal position",
+        "Inability to move the affected area",
+        "Bone protruding through skin",
+        "Grinding or grating sensation"
+      ],
+      "first_aid_steps": [
+        {
+          "step": 1,
+          "instruction": "Call emergency services immediately - DO NOT MOVE THE PERSON unless necessary"
+        },
+        {
+          "step": 2,
+          "instruction": "Immobilize the injured area - do not try to realign the bone"
+        },
+        {
+          "step": 3,
+          "instruction": "Apply ice packs to reduce swelling (wrapped in cloth, not directly on skin)"
+        },
+        {
+          "step": 4,
+          "instruction": "If bone is protruding, do not push it back - cover with sterile dressing"
+        },
+        {
+          "step": 5,
+          "instruction": "Treat for shock: keep person warm and lying down"
+        },
+        {
+          "step": 6,
+          "instruction": "Monitor breathing and consciousness until help arrives"
+        }
+      ],
+      "emergency_triggers": [
+        "THIS IS A SERIOUS INJURY - CALL EMERGENCY SERVICES",
+        "Open fracture (bone visible)",
+        "Heavy bleeding",
+        "Limb is deformed",
+        "Numbness or tingling below injury",
+        "Fracture involves spine, neck, hip, or skull"
+      ],
+      "prevention_tips": [
+        "Wear protective gear during sports",
+        "Keep floors clear of tripping hazards",
+        "Use proper safety equipment at work",
+        "Maintain bone health with calcium and vitamin D"
+      ]
+    },
+    {
+      "id": "poisoning",
+      "name": "Poisoning",
+      "keywords": ["poison", "poisoning", "toxic", "swallowed", "ingested", "chemical", "overdose"],
+      "severity": "emergency",
+      "symptoms": [
+        "Nausea and vomiting",
+        "Diarrhea",
+        "Confusion or altered mental state",
+        "Difficulty breathing",
+        "Burns around mouth",
+        "Seizures",
+        "Unconsciousness"
+      ],
+      "first_aid_steps": [
+        {
+          "step": 1,
+          "instruction": "CALL POISON CONTROL CENTER OR EMERGENCY SERVICES IMMEDIATELY"
+        },
+        {
+          "step": 2,
+          "instruction": "Try to identify what was ingested and have the container ready"
+        },
+        {
+          "step": 3,
+          "instruction": "Do NOT induce vomiting unless instructed by poison control"
+        },
+        {
+          "step": 4,
+          "instruction": "If person is unconscious, position them on their side"
+        },
+        {
+          "step": 5,
+          "instruction": "If substance is on skin, remove contaminated clothing and rinse skin with water"
+        },
+        {
+          "step": 6,
+          "instruction": "Monitor breathing and consciousness until help arrives"
+        }
+      ],
+      "emergency_triggers": [
+        "THIS IS AN EMERGENCY - CALL POISON CONTROL OR EMERGENCY SERVICES",
+        "Any suspected poisoning",
+        "Difficulty breathing",
+        "Seizures",
+        "Unconsciousness",
+        "Chemical burns"
+      ],
+      "prevention_tips": [
+        "Store chemicals and medications in locked cabinets",
+        "Keep products in original containers",
+        "Read labels before using products",
+        "Install carbon monoxide detectors"
+      ]
+    },
+    {
+      "id": "head_injury",
+      "name": "Head Injury",
+      "keywords": ["head injury", "concussion", "hit head", "bump on head", "head trauma"],
+      "severity": "serious",
+      "symptoms": [
+        "Bump or bruise on head",
+        "Headache",
+        "Dizziness or confusion",
+        "Nausea or vomiting",
+        "Blurred vision",
+        "Loss of consciousness",
+        "Memory problems"
+      ],
+      "first_aid_steps": [
+        {
+          "step": 1,
+          "instruction": "If severe symptoms, call emergency services immediately"
+        },
+        {
+          "step": 2,
+          "instruction": "Keep the person still and lying down"
+        },
+        {
+          "step": 3,
+          "instruction": "Apply ice pack wrapped in cloth to reduce swelling"
+        },
+        {
+          "step": 4,
+          "instruction": "Monitor for worsening symptoms"
+        },
+        {
+          "step": 5,
+          "instruction": "Do not give medication without medical advice"
+        },
+        {
+          "step": 6,
+          "instruction": "Keep person awake and alert for at least a few hours"
+        }
+      ],
+      "emergency_triggers": [
+        "Loss of consciousness",
+        "Severe headache that worsens",
+        "Repeated vomiting",
+        "Seizures",
+        "Unequal pupil sizes",
+        "Clear fluid draining from nose or ears",
+        "Slurred speech or weakness",
+        "Confusion or memory loss"
+      ],
+      "prevention_tips": [
+        "Wear helmets during sports and cycling",
+        "Use seat belts in vehicles",
+        "Install safety gates for children",
+        "Remove tripping hazards from home"
+      ]
+    },
+    {
+      "id": "insect_sting",
+      "name": "Insect Sting or Bite",
+      "keywords": ["bee sting", "wasp", "insect bite", "sting", "allergic reaction"],
+      "severity": "minor",
+      "symptoms": [
+        "Pain at sting site",
+        "Redness and swelling",
+        "Itching",
+        "Stinger may be visible"
+      ],
+      "first_aid_steps": [
+        {
+          "step": 1,
+          "instruction": "Remove stinger if visible by scraping with credit card (don't pinch)"
+        },
+        {
+          "step": 2,
+          "instruction": "Wash area with soap and water"
+        },
+        {
+          "step": 3,
+          "instruction": "Apply ice pack for 10-15 minutes to reduce swelling"
+        },
+        {
+          "step": 4,
+          "instruction": "Apply calamine lotion or hydrocortisone cream for itching"
+        },
+        {
+          "step": 5,
+          "instruction": "Take antihistamine if needed for itching"
+        },
+        {
+          "step": 6,
+          "instruction": "Elevate the affected area if possible"
+        }
+      ],
+      "emergency_triggers": [
+        "Difficulty breathing or wheezing",
+        "Swelling of face, lips, or throat",
+        "Rapid pulse",
+        "Dizziness or fainting",
+        "Hives spreading from sting site",
+        "Nausea or vomiting",
+        "THESE ARE SIGNS OF SEVERE ALLERGIC REACTION - CALL EMERGENCY SERVICES"
+      ],
+      "prevention_tips": [
+        "Avoid wearing bright colors or floral patterns outdoors",
+        "Don't wear perfume or scented products",
+        "Keep food and drinks covered",
+        "Wear shoes outdoors"
+      ]
+    },
+    {
+      "id": "eye_injury",
+      "name": "Eye Injury",
+      "keywords": ["eye injury", "something in eye", "eye pain", "foreign object in eye"],
+      "severity": "moderate",
+      "symptoms": [
+        "Pain in eye",
+        "Redness",
+        "Tearing",
+        "Sensitivity to light",
+        "Blurred vision",
+        "Feeling of something in eye"
+      ],
+      "first_aid_steps": [
+        {
+          "step": 1,
+          "instruction": "Do NOT rub the eye"
+        },
+        {
+          "step": 2,
+          "instruction": "For small particles: Blink several times to try to remove"
+        },
+        {
+          "step": 3,
+          "instruction": "Pull upper eyelid over lower lid to help flush out particle"
+        },
+        {
+          "step": 4,
+          "instruction": "Flush eye gently with clean water or saline solution"
+        },
+        {
+          "step": 5,
+          "instruction": "If object doesn't come out, cover both eyes and seek medical help"
+        },
+        {
+          "step": 6,
+          "instruction": "For chemical exposure: Flush immediately with water for 15-20 minutes"
+        }
+      ],
+      "emergency_triggers": [
+        "Object is embedded in the eye",
+        "Chemical splash in eye",
+        "Sharp pain or inability to open eye",
+        "Blood in white part of eye",
+        "Vision loss or changes",
+        "Object cannot be  flushed out"
+      ],
+      "prevention_tips": [
+        "Wear safety glasses when using tools",
+        "Keep chemicals away from face",
+        "Use protective eyewear during sports"
+      ]
+    }
+  ],
+  "emergency_numbers": {
+    "general": "Call your local emergency number (911 in US, 999 in UK, 112 in EU)",
+    "poison_control_us": "1-800-222-1222",
+    "disclaimer": "For life-threatening emergencies, always call emergency services immediately"
+  },
+  "general_disclaimer": "This chatbot provides basic first-aid guidance only. It is not a substitute for professional medical advice, diagnosis, or treatment. For serious injuries or if you are unsure, always seek immediate medical attention."
+}

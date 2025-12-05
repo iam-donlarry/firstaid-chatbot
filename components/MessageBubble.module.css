@@ -1,0 +1,134 @@
+.messageWrapper {
+    display: flex;
+    width: 100%;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.userWrapper {
+    justify-content: flex-end;
+}
+
+.assistantWrapper {
+    justify-content: flex-start;
+}
+
+.messageBubble {
+    display: flex;
+    gap: var(--spacing-sm);
+    max-width: 80%;
+    align-items: flex-start;
+}
+
+.userBubble {
+    flex-direction: row-reverse;
+}
+
+.assistantBubble {
+    flex-direction: row;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    flex-shrink: 0;
+}
+
+.messageContent {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.userBubble .messageContent {
+    align-items: flex-end;
+}
+
+.assistantBubble .messageContent {
+    align-items: flex-start;
+}
+
+.emergencyBadge {
+    background: var(--danger-color);
+    color: white;
+    padding: 4px 8px;
+    border-radius: var(--radius-sm);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.messageText {
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--radius-md);
+    line-height: 1.5;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.userBubble .messageText {
+    background: var(--primary-color);
+    color: white;
+    border-bottom-right-radius: 4px;
+}
+
+.assistantBubble .messageText {
+    background: var(--background);
+    color: var(--foreground);
+    border: 1px solid var(--border-color);
+    border-bottom-left-radius: 4px;
+}
+
+.emergency .messageText {
+    background: #fee2e2;
+    border-color: var(--danger-color);
+    color: #991b1b;
+}
+
+@media (prefers-color-scheme: dark) {
+    .emergency .messageText {
+        background: #7f1d1d;
+        color: #fecaca;
+    }
+}
+
+.timestamp {
+    font-size: 0.75rem;
+    color: var(--foreground-secondary);
+    padding: 0 var(--spacing-xs);
+}
+
+@media (max-width: 768px) {
+    .messageBubble {
+        max-width: 90%;
+    }
+
+    .avatar {
+        width: 32px;
+        height: 32px;
+        font-size: 1rem;
+    }
+
+    .messageText {
+        padding: var(--spacing-xs) var(--spacing-sm);
+        font-size: 0.9rem;
+    }
+}

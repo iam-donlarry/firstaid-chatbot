@@ -1,0 +1,30 @@
+{
+    "critical_keywords": [
+        "unconscious",
+        "not breathing",
+        "no pulse",
+        "severe bleeding",
+        "chest pain",
+        "heart attack",
+        "stroke",
+        "seizure",
+        "can't breathe",
+        "choking",
+        "suicide",
+        "overdose",
+        "severe allergic reaction",
+        "anaphylaxis",
+        "bone protruding",
+        "severe burn",
+        "electrocution",
+        "drowning",
+        "chemical in eye",
+        "head trauma",
+        "neck injury",
+        "spinal injury",
+        "unresponsive"
+    ],
+    "emergency_response": {
+        "message": "⚠️ EMERGENCY ALERT ⚠️\n\nBased on your description, this appears to be a medical emergency.\n\n🚨 CALL EMERGENCY SERVICES IMMEDIATELY:\n• US: 911\n• UK: 999\n• EU: 112\n\nWhile waiting for emergency services:\n• Stay calm\n• Keep the person comfortable\n• Monitor breathing and consciousness\n• Do not move the person unless absolutely necessary\n• Be ready to provide information to emergency responders\n\nThis chatbot is NOT a substitute for emergency medical care. Please call for help now."
+    }
+}
