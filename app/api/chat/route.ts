@@ -20,17 +20,31 @@ function getChatbot(): FirstAidChatbot {
 export async function POST(request: NextRequest) {
     try {
         const body: ChatRequest = await request.json();
-        const { message, sessionId } = body;
+        const { message, sessionId, image, mimeType } = body;
 
-        if (!message || typeof message !== 'string') {
+        if (!message && !image) {
             return NextResponse.json(
-                { error: 'Message is required and must be a string' },
+                { error: 'Message or image is required' },
                 { status: 400 }
             );
         }
 
         const bot = getChatbot();
-        const response = await bot.chat(message, sessionId);
+        let response;
+
+        if (image && mimeType) {
+            // Handle image chat
+            const imageBuffer = Buffer.from(image, 'base64');
+            response = await bot.chatWithImage(
+                message || 'Please analyze this image',
+                imageBuffer,
+                mimeType,
+                sessionId
+            );
+        } else {
+            // Handle text-only chat
+            response = await bot.chat(message, sessionId);
+        }
 
         return NextResponse.json(response);
     } catch (error) {

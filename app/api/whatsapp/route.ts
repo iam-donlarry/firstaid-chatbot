@@ -42,20 +42,31 @@ export async function POST(request: NextRequest) {
 
             if (mediaUrl) {
                 try {
+                    console.log('Attempting to download image from:', mediaUrl);
+
                     // Download image from Twilio
+                    // Twilio requires Basic Auth for media URLs
                     const authHeader = 'Basic ' + Buffer.from(`${TWILIO_ACCOUNT_SID}:${TWILIO_AUTH_TOKEN}`).toString('base64');
 
                     const imageResponse = await fetch(mediaUrl, {
                         headers: {
-                            'Authorization': authHeader
+                            'Authorization': authHeader,
+                            'User-Agent': 'Node.js/FirstAidChatbot'
                         }
                     });
 
+                    console.log('Image download status:', imageResponse.status, imageResponse.statusText);
+
                     if (!imageResponse.ok) {
-                        throw new Error('Failed to download image');
+                        const errorText = await imageResponse.text();
+                        console.error('Twilio download error body:', errorText);
+                        throw new Error(`Failed to download image: ${imageResponse.status} ${imageResponse.statusText}`);
                     }
 
-                    const imageBuffer = Buffer.from(await imageResponse.arrayBuffer());
+                    const arrayBuffer = await imageResponse.arrayBuffer();
+                    const imageBuffer = Buffer.from(arrayBuffer);
+
+                    console.log('Image downloaded successfully. Size:', imageBuffer.length);
 
                     // Process with image
                     response = await bot.chatWithImage(

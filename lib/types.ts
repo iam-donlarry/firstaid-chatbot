@@ -51,6 +51,8 @@ export interface ConversationContext {
 export interface ChatRequest {
   message: string;
   sessionId?: string;
+  image?: string; // base64 string
+  mimeType?: string;
 }
 
 export interface ChatResponse {
