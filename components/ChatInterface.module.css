@@ -188,6 +188,159 @@
     height: 44px;
 }
 
+.emptyState {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: var(--spacing-xl);
+    color: var(--foreground-secondary);
+}
+
+.emptyState h2 {
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-sm);
+    color: var(--foreground);
+}
+
+.emptyState p {
+    font-size: 1rem;
+    margin-bottom: var(--spacing-md);
+}
+
+.exampleQuestions {
+    background: var(--background);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    text-align: left;
+    max-width: 500px;
+}
+
+.exampleQuestions p {
+    margin-bottom: var(--spacing-xs);
+    font-weight: 600;
+    color: var(--foreground);
+}
+
+.exampleQuestions ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.exampleQuestions li {
+    padding: var(--spacing-xs);
+    color: var(--primary-color);
+    cursor: pointer;
+    transition: background 0.2s ease;
+    border-radius: var(--radius-sm);
+}
+
+.exampleQuestions li:hover {
+    background: var(--border-color);
+}
+
+.inputContainer {
+    border-top: 1px solid var(--border-color);
+    background: var(--background);
+    padding: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.imagePreview {
+    position: relative;
+    width: fit-content;
+    max-width: 100%;
+    background: var(--background-secondary);
+    padding: var(--spacing-xs);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+}
+
+.imagePreview img {
+    max-height: 100px;
+    border-radius: var(--radius-sm);
+    display: block;
+}
+
+.removeImageButton {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--danger-color);
+    color: white;
+    border: 2px solid var(--background);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 1;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+}
+
+.removeImageButton:hover {
+    transform: scale(1.1);
+}
+
+.inputForm {
+    display: flex;
+    gap: var(--spacing-sm);
+    align-items: center;
+}
+
+.attachButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    background: transparent;
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-md);
+    color: var(--foreground-secondary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.attachButton svg {
+    width: 24px;
+    height: 24px;
+}
+
+.attachButton:hover:not(:disabled) {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    background: var(--background-secondary);
+}
+
+.attachButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.input {
+    flex: 1;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    font-family: inherit;
+    background: var(--background-secondary);
+    color: var(--foreground);
+    transition: border-color 0.2s ease;
+    height: 44px;
+}
+
 .input:focus {
     outline: none;
     border-color: var(--primary-color);
@@ -230,7 +383,10 @@
 
 @media (max-width: 768px) {
     .chatContainer {
-        height: 500px;
+        height: 85vh;
+        /* Use more vertical space on mobile */
+        border-radius: var(--radius-md);
+        /* Slightly smaller radius */
     }
 
     .emptyState {
@@ -243,9 +399,31 @@
 
     .inputContainer {
         padding: var(--spacing-sm);
+        gap: var(--spacing-xs);
+    }
+
+    .inputForm {
+        gap: var(--spacing-xs);
     }
 
     .sendButton {
         padding: 0 var(--spacing-md);
+        min-width: 60px;
+        /* Ensure minimum touch target width */
+    }
+
+    .attachButton {
+        width: 40px;
+        height: 40px;
+    }
+
+    .input {
+        height: 40px;
+        font-size: 16px;
+        /* Prevent iOS zoom on focus */
+    }
+
+    .sendButton {
+        height: 40px;
     }
 }

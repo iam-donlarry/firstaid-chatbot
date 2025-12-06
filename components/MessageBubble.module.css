@@ -118,7 +118,8 @@
 
 @media (max-width: 768px) {
     .messageBubble {
-        max-width: 90%;
+        max-width: 92%;
+        gap: var(--spacing-xs);
     }
 
     .avatar {
@@ -128,7 +129,7 @@
     }
 
     .messageText {
-        padding: var(--spacing-xs) var(--spacing-sm);
-        font-size: 0.9rem;
+        padding: var(--spacing-sm);
+        font-size: 0.95rem;
     }
 }
