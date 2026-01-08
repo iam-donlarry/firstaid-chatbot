@@ -1,6 +1,20 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { FirstAidChatbot } from '@/lib/chatbot';
 import twilio from 'twilio';
+import fs from 'fs';
+import path from 'path';
+
+const LOG_FILE = path.join(process.cwd(), 'debug_whatsapp.log');
+
+function logDebug(message: string) {
+    const timestamp = new Date().toISOString();
+    const logLine = `${timestamp}: ${message}\n`;
+    try {
+        fs.appendFileSync(LOG_FILE, logLine);
+    } catch (e) {
+        console.error('Failed to write to debug log:', e);
+    }
+}
 
 const TWILIO_ACCOUNT_SID = process.env.TWILIO_ACCOUNT_SID || '';
 const TWILIO_AUTH_TOKEN = process.env.TWILIO_AUTH_TOKEN || '';
@@ -10,10 +24,13 @@ let chatbot: FirstAidChatbot | null = null;
 
 function getChatbot(): FirstAidChatbot {
     if (!chatbot) {
+        logDebug('Initializing new chatbot instance');
+        logDebug(`API Key present: ${!!API_KEY}`);
         chatbot = new FirstAidChatbot(API_KEY);
     }
     return chatbot;
 }
+
 
 export async function POST(request: NextRequest) {
     try {
@@ -22,8 +39,10 @@ export async function POST(request: NextRequest) {
         const from = formData.get('From')?.toString() || '';
         const numMedia = parseInt(formData.get('NumMedia')?.toString() || '0');
 
+        logDebug(`Received message from ${from}: ${message}`);
         console.log('--- WhatsApp Webhook Debug ---');
         console.log('From:', from);
+
         console.log('Message Body:', message);
         console.log('NumMedia:', numMedia);
         console.log('MediaUrl0:', formData.get('MediaUrl0'));
@@ -109,21 +128,26 @@ export async function POST(request: NextRequest) {
             }
         } else {
             // No media, process as text
+            logDebug('Processing text message');
             response = await bot.chat(message, sessionId);
+            logDebug('Chat response generated');
         }
 
         // Create Twilio MessagingResponse
         const MessagingResponse = twilio.twiml.MessagingResponse;
         const twiml = new MessagingResponse();
 
+        logDebug(`Sending response: ${response.message.substring(0, 50)}...`);
         twiml.message(response.message);
 
         return new NextResponse(twiml.toString(), {
+
             headers: {
                 'Content-Type': 'text/xml',
             },
         });
     } catch (error) {
+        logDebug(`Error in webhook: ${error instanceof Error ? error.message : String(error)}`);
         console.error('WhatsApp webhook error:', error);
 
         const MessagingResponse = twilio.twiml.MessagingResponse;
