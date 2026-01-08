@@ -122,9 +122,9 @@ export async function POST(request: NextRequest) {
             // No media, process as text
             logDebug('Processing text message');
 
-            // Create a timeout promise that rejects after 9 seconds (Twilio timeout is 15s, Vercel default is 10s)
+            // Create a timeout promise that rejects after 5 seconds to be safe within Vercel's 10s limit (including cold start)
             const timeoutPromise = new Promise<never>((_, reject) => {
-                setTimeout(() => reject(new Error('AI_TIMEOUT')), 9000);
+                setTimeout(() => reject(new Error('AI_TIMEOUT')), 5000);
             });
 
             try {
