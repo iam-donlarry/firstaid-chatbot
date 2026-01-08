@@ -182,13 +182,7 @@ export class FirstAidChatbot {
         context: ConversationContext
     ): Promise<string> {
         try {
-            const model = this.genAI.getGenerativeModel({
-                model: 'gemini-1.5-flash', // Using explicit model version for stability
-                generationConfig: {
-                    maxOutputTokens: 300, // Limit response length for speed
-                    temperature: 0.7,
-                }
-            });
+            const model = this.genAI.getGenerativeModel({ model: 'gemini-flash-latest' });
 
 
             // Build conversation history
@@ -226,13 +220,7 @@ For non-emergency first-aid guidance, please try rephrasing your question.`;
         context: ConversationContext
     ): Promise<string> {
         try {
-            const model = this.genAI.getGenerativeModel({
-                model: 'gemini-1.5-flash',
-                generationConfig: {
-                    maxOutputTokens: 300,
-                    temperature: 0.7,
-                }
-            });
+            const model = this.genAI.getGenerativeModel({ model: 'gemini-flash-latest' });
 
 
             // Medical image analysis prompt
