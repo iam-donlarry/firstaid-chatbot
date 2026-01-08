@@ -1,19 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { FirstAidChatbot } from '@/lib/chatbot';
 import twilio from 'twilio';
-import fs from 'fs';
-import path from 'path';
 
-const LOG_FILE = path.join(process.cwd(), 'debug_whatsapp.log');
-
+// Helper for standardized debug logging
 function logDebug(message: string) {
     const timestamp = new Date().toISOString();
-    const logLine = `${timestamp}: ${message}\n`;
-    try {
-        fs.appendFileSync(LOG_FILE, logLine);
-    } catch (e) {
-        console.error('Failed to write to debug log:', e);
-    }
+    console.log(`[WhatsApp Debug ${timestamp}] ${message}`);
 }
 
 const TWILIO_ACCOUNT_SID = process.env.TWILIO_ACCOUNT_SID || '';
@@ -129,8 +121,32 @@ export async function POST(request: NextRequest) {
         } else {
             // No media, process as text
             logDebug('Processing text message');
-            response = await bot.chat(message, sessionId);
-            logDebug('Chat response generated');
+
+            // Create a timeout promise that rejects after 9 seconds (Twilio timeout is 15s, Vercel default is 10s)
+            const timeoutPromise = new Promise<never>((_, reject) => {
+                setTimeout(() => reject(new Error('AI_TIMEOUT')), 9000);
+            });
+
+            try {
+                // Race between chatbot response and timeout
+                response = await Promise.race([
+                    bot.chat(message, sessionId),
+                    timeoutPromise
+                ]);
+                logDebug('Chat response generated');
+            } catch (error: any) {
+                if (error.message === 'AI_TIMEOUT') {
+                    console.error('AI generation timed out');
+                    logDebug('AI generation timed out - using fallback');
+                    response = {
+                        message: "I'm currently experiencing high traffic and couldn't generate a response in time. Please try asking again in a moment.",
+                        isEmergency: false,
+                        sessionId: sessionId
+                    };
+                } else {
+                    throw error;
+                }
+            }
         }
 
         // Create Twilio MessagingResponse

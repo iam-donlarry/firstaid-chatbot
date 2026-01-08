@@ -182,7 +182,14 @@ export class FirstAidChatbot {
         context: ConversationContext
     ): Promise<string> {
         try {
-            const model = this.genAI.getGenerativeModel({ model: 'gemini-flash-latest' });
+            const model = this.genAI.getGenerativeModel({
+                model: 'gemini-1.5-flash', // Using explicit model version for stability
+                generationConfig: {
+                    maxOutputTokens: 300, // Limit response length for speed
+                    temperature: 0.7,
+                }
+            });
+
 
             // Build conversation history
             const conversationHistory = context.messages.slice(-6); // Last  6 messages for context
@@ -219,7 +226,14 @@ For non-emergency first-aid guidance, please try rephrasing your question.`;
         context: ConversationContext
     ): Promise<string> {
         try {
-            const model = this.genAI.getGenerativeModel({ model: 'gemini-flash-latest' });
+            const model = this.genAI.getGenerativeModel({
+                model: 'gemini-1.5-flash',
+                generationConfig: {
+                    maxOutputTokens: 300,
+                    temperature: 0.7,
+                }
+            });
+
 
             // Medical image analysis prompt
             const imagePrompt = `You are a first-aid assistant analyzing an image. 
