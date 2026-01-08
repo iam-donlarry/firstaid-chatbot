@@ -122,9 +122,9 @@ export async function POST(request: NextRequest) {
             // No media, process as text
             logDebug('Processing text message');
 
-            // Create a timeout promise that rejects after 5 seconds to be safe within Vercel's 10s limit (including cold start)
+            // Create a timeout promise that rejects after 8.5 seconds (Vercel limit is 10s)
             const timeoutPromise = new Promise<never>((_, reject) => {
-                setTimeout(() => reject(new Error('AI_TIMEOUT')), 5000);
+                setTimeout(() => reject(new Error('AI_TIMEOUT')), 8500);
             });
 
             try {
